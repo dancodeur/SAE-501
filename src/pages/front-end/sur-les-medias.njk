@@ -5,8 +5,78 @@
 
 
 {% block main %}
-    <section class="px-2 flex justify-center w-[80%]">
-         <h1 class="text-3xl font-bold lg:col-span-2 mt-6 lg:mt-0">Les médias</h1>
-         <p>Les médias ici !!!</p>
-    </section>
+<section class="py-8 px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <!-- Titre principal -->
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+      Les actualités et les événements importants
+      <br />
+      du BUT et de l'IUT CY Paris Université dans les médias
+    </h2>
+
+    <!-- Grille des vidéos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Vidéo 1 -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          La nouvelle réforme : le BUT MMI
+        </h3>
+        <iframe
+          class="w-full h-[350px] rounded-md shadow-md"
+          src="https://www.youtube.com/embed/oiEbQF7qfBU"
+          title="Vidéo 1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- Vidéo 2 -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          Pourquoi étudier à l'IUT CYU ?
+        </h3>
+        <iframe
+          class="w-full h-[350px] rounded-md shadow-md"
+          src="https://www.youtube.com/embed/SyjF4h2Zb7Q"
+          title="Vidéo 2"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- Vidéo 3 -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          Job interview en anglais au département MMI
+        </h3>
+        <iframe
+          class="w-full h-[350px] rounded-md shadow-md"
+          src="https://www.youtube.com/embed/t72pdxpNjyc"
+          title="Vidéo 3"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- Vidéo 4 -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          L'importance de l'IUT dans les études supérieures
+        </h3>
+        <iframe
+          class="w-full h-[350px] rounded-md shadow-md"
+          src="https://www.youtube.com/embed/xD4wshE0hEg"
+          title="Vidéo 4"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
