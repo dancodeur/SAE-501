@@ -57,7 +57,7 @@ router.get("/a-propos(.html)?", routeName("about"), async (_req, res) => {
  * NOS ROUTES PERSONNALISEES ICI !!!
  */
 
-//Contact
+
 router.get("/contact(.html)?", routeName("contact"), async (_req, res) => {
     const options = {
         method: "GET",
@@ -74,7 +74,7 @@ router.get("/contact(.html)?", routeName("contact"), async (_req, res) => {
     });
 });
 
-//Lieux de vie
+
 router.get("/lieux(.html)?", routeName("vie-etudiante"), async (_req, res) => {
     const options = {
         method: "GET",
@@ -92,7 +92,7 @@ router.get("/lieux(.html)?", routeName("vie-etudiante"), async (_req, res) => {
 });
 
 
-//Sur les médias
+
 router.get("/sur-les-medias(.html)?", routeName("medias"), async (_req, res) => {
     const options = {
         method: "GET",
@@ -108,5 +108,10 @@ router.get("/sur-les-medias(.html)?", routeName("medias"), async (_req, res) => 
         data: result.data,
     });
 });
+
+/**
+ * Gestion des erreurs 404
+ */
+
 
 export default router;
