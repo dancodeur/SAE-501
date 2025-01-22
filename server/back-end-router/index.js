@@ -9,6 +9,7 @@ import parseManifest from "#server/utils/parse-manifest.js";
 import SAERouter from "./sae.js";
 import articleRouter from "./article.js";
 import Auteurs from "./author.js";
+import Divers from "./divers.js";
 import messages from "./messages.js"; 
 
 const router = express.Router();
@@ -31,6 +32,7 @@ router.use(SAERouter);
 router.use(articleRouter);
 router.use(Auteurs); 
 router.use(messages); 
+router.use(Divers);
 
 router.get("/", routeName("admin"), async (req, res) => {
     const queryParamsSAEs = querystring.stringify({ per_page: 5 });
