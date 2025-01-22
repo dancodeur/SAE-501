@@ -2,7 +2,7 @@ body:has(dialog:modal) {
     overflow: hidden;
 }
 
-@container main (width <= theme('containers.3xl')) {
+/* @container main (width <= theme('containers.3xl')) {
     table {
         border: 0;
 
@@ -37,7 +37,7 @@ body:has(dialog:modal) {
             }
         }
     }
-}
+} */
 
 ::backdrop {
     backdrop-filter: blur(5px);
