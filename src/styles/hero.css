@@ -93,8 +93,8 @@
         background-color: #0ceec0;
     }
 
-    &.orange {
-        background-color: #ee8f00;
+    &.jaune {
+        background-color: #ffe700;
     }
 
     &.bleu {
@@ -131,11 +131,11 @@
         background-color: #03886d;
     }
 
-    &.orange {
-        background-color: #d13b00;
+    &.jaune {
+        background-color: #ee8f00;
     }
 
     &.bleu {
-        background-color: #00a2ff;
+        background-color: #c9c9c9;
     }
 }
