@@ -9,11 +9,17 @@
 {% set  bubble_color="contact" %}
 
     <div>
-        <h1 class="text-xl font-bold lg:col-span-2 mt-6 lg:mt-0">Plus d'infos sur la formation ? <br> Contactez-nous </h1>
-        <p>Texte here !!!</p>
+        <h1 class="text-3xl font-bold lg:col-span-2 mt-6 lg:mt-0 mx-auto p-6">Plus d'infos sur la formation ? <br> Contactez-nous !</h1>
+        <p class="text-md mx-auto p-6"><span class="font-bold">La formation s'ouvre à tous les bacheliers, </span>pour rappel. Avoir des connaissances en programmation, design ou encore audiovisuel n'est pas obligatoire mais reste un bon atout, car il faut aimer la curiosité dans cette formation pluridisciplinaire. <span class="font-bold">Il est également possible de faire la formation après une reprise d'études ou une réorientation.</span></p>
+        <h1 class="text-3xl font-bold lg:col-span-2 mt-6 lg:mt-0 mx-auto p-6">Nous contactez en ligne</h1>
     </div>
+<<<<<<< Updated upstream
     <div class="mx-auto p-6 flex">
         <form action="#" method="">
+=======
+    <div class="mx-auto p-6 md:flex">
+        <form action="#" method="POST">
+>>>>>>> Stashed changes
             <div class="mb-4">
                 <label for="prenom" class="block text-sm font-medium text-gray-700">
                     Prénom
@@ -23,7 +29,6 @@
                     id="prenom"
                     name="prenom"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Votre prénom"
                     required
                 />
             </div>
@@ -37,7 +42,6 @@
                     id="nom"
                     name="nom"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Votre nom"
                     required
                 />
             </div>
@@ -51,7 +55,7 @@
                     id="email"
                     name="email"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Votre e-mail"
+                    placeholder="exemple@email.com"
                     required
                 />
             </div>
@@ -65,17 +69,16 @@
                     name="message"
                     rows="4"
                     class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Votre message"
                     required
                 ></textarea>
             </div>
 
-            <div class="mb-4 flex space-y-4">
+            <div class="mb-4  space-y-4">
                 <span class="text-sm font-medium text-gray-700">
                     Je suis
                 </span>
-                <div class="space-y-2 flex">
-                    <div>
+                <div class="space-y-2 md:flex items-end">
+                    <div class="mr-2">
                         <label class="inline-flex items-center">
                             <input
                             type="radio"
@@ -86,7 +89,7 @@
                             <span class="ml-2">Je ne souhaite pas le préciser</span>
                         </label>
                     </div>
-                    <div>
+                    <div class="mr-2">
                         <label class="inline-flex items-center">
                             <input
                             type="radio"
@@ -97,7 +100,7 @@
                             <span class="ml-2">Étudiant / Étudiante</span>
                         </label>
                     </div>
-                    <div>
+                    <div class="mr-2">
                         <label class="inline-flex items-center">
                             <input
                             type="radio"
@@ -108,7 +111,7 @@
                             <span class="ml-2">Parent</span>
                         </label>
                     </div>
-                    <div>
+                    <div class="mr-2">
                         <label class="inline-flex items-center">
                             <input
                             type="radio"
@@ -131,6 +134,13 @@
             </button>
             </div>
         </form>
+    </div>
+    <div>
+     <h1 class="text-3xl font-bold lg:col-span-2 mt-6 lg:mt-0 mx-auto p-6">Nous contactez par courrier</h1>
+        <p class="text-md pl-6">IUT de Cergy-Pontoise,</p>
+        <p class="text-md pl-6">Département Métiers du Multimédia et de l'Internet (MMI)</p>
+        <p class="text-md pl-6">34 Bis Boulevard Henri Bergson</p>
+        <p class="text-md pl-6">95200 Sarcelles</p>
     </div>
 
 {% endblock %}
