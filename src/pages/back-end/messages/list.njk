@@ -45,7 +45,7 @@
         <div class="tooltip hidden bg-slate-800 text-white border border-gray-200 border-solid py-2 px-4 rounded-2xl" data-tooltip="sort">
             <p class="text-sm">{{ sort_text }}</p>
         </div>
-
+        <div class="horizontal-scroll-shadow overflow-x-auto">
         <table class="w-full bg-white border-collapse">
             <thead class="">
                 <tr class="text-slate-800">
@@ -103,6 +103,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
         <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
             {{ pagination.item(list_articles) }}
         </footer>
