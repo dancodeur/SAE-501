@@ -3,6 +3,9 @@
 {% import "components/back-end/list-actions.njk" as list_actions %}
 {% import "pages/back-end/saes/table.njk" as saes with context %}
 
+{% block title %}Accueil
+{% endblock %}
+
 {% block main %}
     <div class="bg-white rounded-2xl mb-10 shadow-md pb-6">
         <header class="mb-1 p-6 gap-2 lg:gap-0 flex justify-between lg:flex-row flex-col">
@@ -32,7 +35,7 @@
                     <th class="px-6 py-3 border-solid border-slate-200 border-b"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="horizontal-scroll-shadow overflow-x-auto">
                 {% for item in list_articles.data %}
                     <tr class="hover:bg-neutral-50 even:bg-blue-50">
                         <td class="bg-transparent border-solid border-slate-200 border-b py-4 px-6" data-label="Titre">{{ item.title }}</td>
@@ -83,8 +86,9 @@
                 Voir tout
             </a>
         </header>
-
+        <div class="horizontal-scroll-shadow overflow-x-auto">
         {{ saes.table(list_saes)}}
+        </div>
     </div>
 
     <div class="bg-white rounded-2xl mb-10 shadow-md pb-6">
@@ -93,6 +97,6 @@
                 Liste messages
             </h2>
         </header>
-        <p>A compléter</p>
+        <p class="horizontal-scroll-shadow overflow-x-auto">A compléter</p>
     </div>
 {% endblock %}
