@@ -1,11 +1,15 @@
 import mongoose, { Schema } from "mongoose";
 import validator from "validator";
 
-const messageSchema = new Schema({
-    
-    firstName: {
+const messageSchema = new Schema({    
+    lastName: {
         type: String,
         required: [true, " Veillez mettre votre nom"],
+   
+    },
+    firstName: {
+        type: String,
+        required: [true, " Veillez mettre votre pénom"],
    
     },
     email: {
