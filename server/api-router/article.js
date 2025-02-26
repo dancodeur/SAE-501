@@ -245,7 +245,7 @@ router.post(`/${base}`, upload.single("image"), async (req, res) => {
         let imageName;
         ({
             image_path: targetPath,
-            errors: listErrors,
+            errors: listErrors = [],
             image_name: imageName,
         } = uploadImage(uploadedImage, res.locals.upload_path));
         imagePayload = { image: imageName };

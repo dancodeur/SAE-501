@@ -114,7 +114,7 @@ router.get("/sur-les-medias(.html)?", routeName("medias"), async (_req, res) => 
  */
 
 router.get("*",(_req, res) => {
-    res.render("pages/error.njk");
+    res.render("pages/error404.njk");
 });
 
 

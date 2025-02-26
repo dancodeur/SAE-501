@@ -41,7 +41,7 @@ router.get([`/${base}/:id`, `/${base}/add`], async (req, res) => {
             result = await axios(options);
         }
     } catch (error) {
-        listErrors = error.response.data.errors;
+        listErrors = error.response?.data?.errors || [];
     }
 
     res.render("pages/back-end/articles/add.njk", {
@@ -94,11 +94,11 @@ router.post([`/${base}/:id`, `/${base}/add`], upload.single("image"), async (req
         });
         listAuthors = listAuthors.data.data;
     } catch (e) {
-        listErrors = e.response.data.errors;
-        ressource = e.response.data.ressource || {};
+        listErrors = e.response?.data?.errors || [];
+        ressource = e.response?.data?.ressource || {};
     } finally {
         if (listErrors.length || isEdit) {
-            res.render("", {
+            res.render("pages/back-end/articles/add.njk", {
                 article: ressource,
                 list_errors: listErrors,
                 list_authors: listAuthors,
