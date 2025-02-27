@@ -113,7 +113,7 @@ router.get("/sur-les-medias(.html)?", routeName("medias"), async (_req, res) => 
  * Gestion des erreurs 404
  */
 
-router.get("*",(_req, res) => {
+router.get("*", (_req, res) => {
     res.render("pages/error404.njk");
 });
 
