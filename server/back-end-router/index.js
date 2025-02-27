@@ -40,8 +40,8 @@ router.get("/", routeName("admin"), async (req, res) => {
         method: "GET",
         url: `${res.locals.base_url}/api/saes?${queryParamsSAEs}`,
     };
-
     const listSAEs = await axios(optionsSAEs);
+
 
     const queryParamsArticles = querystring.stringify({ per_page: 5 });
     const optionsArticles = {
@@ -49,19 +49,14 @@ router.get("/", routeName("admin"), async (req, res) => {
         url: `${res.locals.base_url}/api/articles?${queryParamsArticles}`,
     };
     const listArticles = await axios(optionsArticles);
-    
 
-    /**
-     * Message
-     */
-    
-    const queryParamsMessage = querystring.stringify({ per_page: 5 });
-    const optionsMessage = {
+
+    const queryParamsMessages = querystring.stringify({ per_page: 5 });
+    const optionsMessages = {
         method: "GET",
-        url: `${res.locals.base_url}/api/messages?${queryParamsMessage}`,
+        url: `${res.locals.base_url}/api/messages?${queryParamsMessages}`,
     };
-
-    const listMessages = await axios( optionsMessage);
+    const listMessages = await axios(optionsMessages); 
 
     res.render("pages/back-end/index.njk", {
         list_saes: {
