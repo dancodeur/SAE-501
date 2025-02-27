@@ -1,8 +1,40 @@
+{% set menu_entries = [
+    {
+        link: "/",
+        name: "ACCUEIL",
+        key: "home"
+    },
+    {
+        link: "/a-propos.html",
+        name: "A PROPOS",
+        key: "about"
+    },
+    {
+        link: "/lieux.html",
+        name: "LIEUX DE VIE",
+        key: "places"
+    },
+    {
+        link: "/sur-les-medias.html",
+        name: "SUR LES MÉDIAS",
+        key: "media"
+    },
+    {
+        link: "/contact.html",
+        name: "CONTACT",
+        key: "contact"
+    }
+] %}
+
+
 <nav class="max-w-[1200px] mx-auto" role="navigation" aria-label="Menu principal">
-    <ul data-navigation="front-end" class="horizontal-scroll-shadow flex md:justify-end gap-x-10 overflow-x-auto sm:mr-0 mt-10 before:!-mt-0.5 before:!pt-0 after:!-mt-0.5 after:!pt-0">
-        {% for menu_item in menu %}
-            <li class="{{ 'supports-[animation-timeline]:-ml-9' if loop.first else ''}}{{ 'supports-[animation-timeline]:-mr-9' if loop.last else ''}}">
-                <a class="block whitespace-nowrap text-lg hocus:text-pink-600" href="{{ menu_item.link }}">{{ menu_item.name }}</a>
+    <ul class="horizontal-scroll-shadow flex md:justify-end gap-x-10 overflow-x-auto sm:mr-0 mt-10 before:!-mt-0.5 before:!pt-0 after:!-mt-0.5 after:!pt-0">
+        {% for menu_item in menu_entries %}
+            <li class="{{ 'supports-[animation-timeline]:-ml-9' if loop.first else '' }}{{ 'supports-[animation-timeline]:-mr-9' if loop.last else '' }}">
+                <a class="block whitespace-nowrap text-lg hocus:text-pink-600
+                                           {% if active_menu_item == menu_item.key %} text-pink-600 {% endif %}" href="{{ menu_item.link }}">
+                    {{ menu_item.name }}
+                </a>
             </li>
         {% endfor %}
     </ul>
