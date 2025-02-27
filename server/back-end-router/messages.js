@@ -9,7 +9,7 @@ import routeName from "#server/utils/name-route.middleware.js";
 const base = "messages";
 const router = express.Router();
 
-// Get or create SAE
+// Get message
 router.get(`/${base}`, routeName("message_list"), async (req, res) => {
     const queryParams = querystring.stringify(req.query);
 
