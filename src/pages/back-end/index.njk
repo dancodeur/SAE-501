@@ -2,6 +2,7 @@
 
 {% import "components/back-end/list-actions.njk" as list_actions %}
 {% import "pages/back-end/saes/table.njk" as saes with context %}
+{% import "pages/back-end/messages/table.njk" as messages with context %}
 
 {% block title %}Accueil
 {% endblock %}
@@ -87,16 +88,21 @@
             </a>
         </header>
         <div class="horizontal-scroll-shadow overflow-x-auto">
-        {{ saes.table(list_saes)}}
+       {{ saes.table(list_saes)}}
         </div>
     </div>
 
     <div class="bg-white rounded-2xl mb-10 shadow-md pb-6">
         <header class="mb-1 p-6 gap-2 lg:gap-0 flex justify-between lg:flex-row flex-col">
-            <h2 class="text-4xl">
-                Liste messages
-            </h2>
+           <div>
+                <h2 class="text-4xl">
+                    Liste messages
+                </h2>
+                <p class="text-sm">{{ list_messages.count }} éléments au total</p>
+            </div>
         </header>
-        <p class="horizontal-scroll-shadow overflow-x-auto">A compléter</p>
+        <div class="horizontal-scroll-shadow overflow-x-auto">
+        {{ messages.table(list_messages)}}
+        </div>
     </div>
 {% endblock %}

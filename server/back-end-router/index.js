@@ -49,6 +49,19 @@ router.get("/", routeName("admin"), async (req, res) => {
         url: `${res.locals.base_url}/api/articles?${queryParamsArticles}`,
     };
     const listArticles = await axios(optionsArticles);
+    
+
+    /**
+     * Message
+     */
+    
+    const queryParamsMessage = querystring.stringify({ per_page: 5 });
+    const optionsMessage = {
+        method: "GET",
+        url: `${res.locals.base_url}/api/messages?${queryParamsMessage}`,
+    };
+
+    const listMessages = await axios( optionsMessage);
 
     res.render("pages/back-end/index.njk", {
         list_saes: {
@@ -58,6 +71,10 @@ router.get("/", routeName("admin"), async (req, res) => {
         list_articles: {
             data: listArticles.data.data,
             count: listArticles.data.count,
+        },
+        list_messages: {
+            data: listMessages.data.data,
+            count: listMessages.data.count,
         },
     });
 });
