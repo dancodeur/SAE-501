@@ -23,8 +23,8 @@ const messageSchema = new Schema({
     },
     identity: {
         type: String,
-        enum: ["nom_precise", "autre", "etudiant", "parent"],
-        default: "nom_precise",
+        enum: ["non_precise", "autre", "etudiant", "parent"],
+        default: "non_precise",
     },
 }, 
 

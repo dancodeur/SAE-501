@@ -11,6 +11,7 @@
     </div>
     <div class="mx-auto p-6 md:flex">
          <form action="" data-async-form>
+            <div id="form-message" class="hidden p-2 rounded-md"></div>
             <div class="mb-4">
                 <label for="lastName" class="block text-sm font-medium text-gray-700">
                     Nom de famille
@@ -69,9 +70,9 @@
                         <label class="inline-flex items-center">
                             <input
                             type="radio"
-                            id="pas_precis"
+                            id="non_precise"
                             name="identity"
-                            value="ne_souhaite_pas_preciser"
+                            value="non_precise"
                             class="text-blue-600 border-gray-300 focus:ring-blue-500" checked/>
                             <span class="ml-2">Je ne souhaite pas le préciser</span>
                         </label>
@@ -118,6 +119,7 @@
                 Envoyer
             </button>
             </div>
+
         </form>
     </div>
     <div>

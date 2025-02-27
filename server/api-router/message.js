@@ -7,7 +7,6 @@ import Message from "#models/message.js";
 const router = express.Router();
 const base = "messages";
 
-// Middleware pour parser le JSON si ce n'est pas déjà dans ton serveur principal
 router.use(express.json());
 
 router.post(`/${base}`, async (req, res) => { 

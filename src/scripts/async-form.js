@@ -6,6 +6,8 @@ const submitForm = async (e) => {
 
     const formData = new FormData(e.target);
     const formValues = Object.fromEntries(formData);
+    const messageDiv = document.getElementById("form-message");
+
 
     // Réinitialiser les erreurs avant validation
     document.querySelectorAll("[data-error-message]").forEach((el) => {
@@ -42,17 +44,22 @@ const submitForm = async (e) => {
 
     // Envoi des données au serveur
     try {
-        const response = await axios.post("/messages", formValues);
+        const response = await axios.post("api/messages", formValues);
 
         if (response.status === 201) {
-            alert("Message envoyé avec succès !");
-            e.target.reset(); // Réinitialiser le formulaire
+            messageDiv.textContent = "Message envoyé avec succès !";
+            messageDiv.className = "mb-4 p-2 rounded-md bg-green-100 text-green-800";
+            e.target.reset(); 
         }
     } catch (error) {
         console.error("Erreur lors de l'envoi :", error);
-        alert("Une erreur est survenue, veuillez réessayer.");
+        messageDiv.textContent = "Une erreur est survenue, veuillez réessayer.";
+        messageDiv.className = "mb-4 p-2 rounded-md bg-red-100 text-red-800";
     }
+    messageDiv.classList.remove("hidden"); // Affiche le message
 };
+
+
 
 // Ajouter l'écouteur d'événements
 document.querySelectorAll("[data-async-form]").forEach((item) => {
