@@ -423,6 +423,9 @@ nunjucksEnv.addFilter("formatNumber", function (value) {
     );
 });
 
+const upload = multer();
+app.use(upload.none());
+
 const configPath = "footer-config.json";
 let config;
 
@@ -436,9 +439,6 @@ try {
 app.set("view engine", "njk");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-
-const upload = multer();
-app.use(upload.none());
 
 const getImages = () => {
     const imagesDir = path.join(__dirname, "../public/images/");
@@ -508,5 +508,4 @@ app.listen(port, listDomains, () => {
             console.log(`\x1b[35m➜\x1b[0m  ${prefix}: \x1b[35mhttp://${item}:${port}/\x1b[0m`);
         });
 });
-
 
