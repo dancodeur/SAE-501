@@ -70,4 +70,14 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const textarea = document.querySelector('textarea[name="content"]');
+        const counter = document.getElementById('counter_description');
+        const charsLimit = {{ chars_limit }};
+
+        textarea.addEventListener('input', function() {
+            const charsLeft = charsLimit - this.value.length;
+            counter.textContent = charsLeft + ' caractères restants';
+        });
 {% endblock %}
