@@ -19,7 +19,7 @@ const base = "articles";
  *     tags:
  *      - Articles
  *     summary: Get all articles
- *     parameters:
+ *     parameters:e
  *      - in: query
  *        name: page
  *        schema:
