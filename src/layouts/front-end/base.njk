@@ -32,6 +32,11 @@
         {% else %}
             <script type="module" src="/{{ manifest['src/scripts/async-form.js'].file }}" defer></script>
         {% endif %}
+        {% if NODE_ENV == "development" %}
+            <script type="module" src="/src/scripts/back-to-top.js" defer></script>
+        {% else %}
+            <script type="module" src="/{{ manifest['src/scripts/back-to-top.js'].file }}" defer></script>
+        {% endif %}
     </head>
     <body class="mr-[max(env(safe-area-inset-right),_theme(space.4))] ml-[max(env(safe-area-inset-left),_theme(space.4))]">
         {% include "components/profiler.njk" %}

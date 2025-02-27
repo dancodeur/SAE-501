@@ -24,6 +24,8 @@ import breadcrumb from "./utils/breadcrumb.middleware.js";
 import responseTimeMiddleware from "./utils/responsetime.middleware.js";
 import profilerFakeMiddleware from "./utils/profiler.middleware.js";
 
+import multer from "multer";
+
 import { generateUrl, getNameForRoute } from "#generate-list-routes.js";
 // import packageJSON from "../package.json" with { "type": "json" };
 
@@ -421,6 +423,52 @@ nunjucksEnv.addFilter("formatNumber", function (value) {
     );
 });
 
+const configPath = "footer-config.json";
+let config;
+
+try {
+    config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+} catch (err) {
+    console.error("Error reading config file:", err);
+    config = {};
+}
+
+app.set("view engine", "njk");
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+
+const upload = multer();
+app.use(upload.none());
+
+const getImages = () => {
+    const imagesDir = path.join(__dirname, "../public/images/");
+    return fs.readdirSync(imagesDir).map(file => "/images/" + file);
+};
+
+app.use((req, res, next) => {
+    res.locals.logoPath = config.logoPath || "../public/images/logo-cyu-couleur.svg";
+    next();
+});
+
+// Page d'administration
+app.get("/admin/update-footer", (req, res) => {
+    res.render("divers", { images: getImages() });
+});
+
+// Route pour mettre à jour le footer
+app.post("/admin/update-footer", (req, res) => {
+    console.log("Received POST request:", req.body); 
+    if (req.body.logoPath && req.body.logoPath.trim() !== "") {
+        config.logoPath = req.body.logoPath;
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+        res.redirect("/admin/update-footer"); 
+    } else {
+        console.error("Logo path is required.");
+        res.status(400).send("Logo path is required.");
+    }
+});
+
+
 console.log(`
         ███████╗ █████╗ ███████╗    ███████╗ ██████╗  ██╗
         ██╔════╝██╔══██╗██╔════╝    ██╔════╝██╔═████╗███║
@@ -460,3 +508,5 @@ app.listen(port, listDomains, () => {
             console.log(`\x1b[35m➜\x1b[0m  ${prefix}: \x1b[35mhttp://${item}:${port}/\x1b[0m`);
         });
 });
+
+
