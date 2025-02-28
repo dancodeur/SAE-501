@@ -37,7 +37,7 @@ const articleSchema = new Schema(
         },
         is_active: {
             type: Boolean,
-            default: false,
+            default: true,
             cast: v => Boolean(v),
         },
         list_comments: [

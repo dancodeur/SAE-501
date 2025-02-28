@@ -1,0 +1,32 @@
+{% extends "layouts/front-end/base.njk" %}
+{% set active_menu_item = "home" %}
+
+{% import "components/front-end/pagination.njk" as pagination with context %}
+
+{% set bubble_color = "vert" %}
+
+{% block title %}- Article{% endblock %}
+
+{% block main %}
+    <article class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">{{ article.title }}</h1>
+        
+        {% if article.image %}
+            <img src="{{ article.image }}" alt="{{ article.title }}" class="w-full mb-4">
+        {% else %}
+            <img src="/images/image-placeholder-article.png" alt="Image par défaut" class="w-full mb-4">
+        {% endif %}
+
+        <p class="text-gray-700">{{ article.content | safe }}</p>
+
+        {% if article.author %}
+            <p class="mt-4 italic">Par {{ article.author.firstname }} {{ article.author.lastname }}</p>
+        {% else %}
+            <p class="mt-4 italic">Par La Rédaction</p>
+        {% endif %}
+    </article>
+
+    <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
+        {{ pagination.item(list_articles) }}
+    </footer>
+{% endblock %}
