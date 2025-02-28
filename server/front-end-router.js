@@ -141,6 +141,23 @@ router.get("/article(.html)?", routeName("article"), async (_req, res) => {
     });
 });
 
+router.get("/article/:id", routeName("article"), async (req, res) => {
+    const articleId = req.params.id;
+    const options = {
+        method: "GET",
+        url: `${res.locals.base_url}/api/articles/${articleId}`,
+    };
+
+    let result = {};
+    try {
+        result = await axios(options);
+    } catch (_error) {}
+
+    res.render("pages/front-end/article.njk", {
+        article: result.data,
+    });
+});
+
 /**
  * Gestion des erreurs 404
  */
