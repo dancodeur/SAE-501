@@ -19,7 +19,7 @@
             </h2>
         </div>
     </header>
-    <form id="logoForm" enctype="multipart/form-data" class="flex flex-col gap-4 mb-1 p-6">
+    <form data-form id="logoForm" enctype="multipart/form-data" class="flex flex-col gap-4 mb-1 p-6">
         <label for="logoUpload" class="block text-gray-700 font-medium">Choisissez un nouveau logo :</label>
                 <div id="form-message" class="hidden p-2 rounded-md"></div>
         <input type="file" id="logoUpload" accept="image/*" 
@@ -30,4 +30,5 @@
         </button>
     </form>
 </div>
+<script src="../../../src/scripts/back-end/alerte-beforeunload.js"></script>
 {% endblock %}

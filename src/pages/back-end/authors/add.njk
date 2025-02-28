@@ -37,22 +37,25 @@
             {% if messages.success %}
                 <p class="rounded-lg p-3 bg-green-100 text-green-800 border-solid border-x border-y border-green-700 mb-3">{{ messages.success }}</p>
             {% endif %}
-            <form action="/api/authors" data-form method="post" enctype="multipart/form-data">
+            <form action="/api/authors" data-form='author' method="post" enctype="multipart/form-data">
                 {% if is_edit == true %}
                     <input type="hidden" name="id" value="{{ authors.id }}"/>
                 {% endif %}
                 <label class="block mb-4">
                     <span class="font-bold text-slate-700 after:content-['*'] after:ml-0.5 after:text-red-500">Nom</span>
                     <input class="block bg-white w-full border border-slate-300 rounded-md py-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="text" name="lastname" value="{{ authors.lastname }}"/>
+                    <p class="hidden text-red-500" data-error-message="lastname"></p>
                 </label>
                 <label class="block mb-4">
                     <span class="font-bold text-slate-700 after:content-['*'] after:ml-0.5 after:text-red-500">Prénom</span>
                     <input class="block bg-white w-full border border-slate-300 rounded-md py-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="text" name="firstname" value="{{ authors.firstname }}"/>
+                    <p class="hidden text-red-500" data-error-message="firstname"></p>
                 </label>
 
                 <label class="block mb-4">
                     <span class="font-bold text-slate-700 after:content-['*'] after:ml-0.5 after:text-red-500">Email</span>
                     <input class="block bg-white w-full border border-slate-300 rounded-md py-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="email" name="email" value="{{ authors.email }}"/>
+                    <p class="hidden text-red-500" data-error-message="email"></p>
                 </label>
 
                 <div class="block mb-4">
@@ -60,6 +63,8 @@
                         <span class="font-bold text-slate-700 after:ml-0.5 after:text-red-500">Image profil</span>
                     </label>
                     {{ input_file.field(authors.image, undefined, ".jpg, .jpeg, .png, .avif") }}
+                    <p class="hidden text-red-500" data-error-message="image"></p>
+
                 </div>
 
                 <label class="block mb-4">
