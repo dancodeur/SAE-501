@@ -1,8 +1,5 @@
 {% extends "layouts/front-end/base.njk" %}
 {% set active_menu_item = "home" %}
-
-{% import "components/front-end/pagination.njk" as pagination with context %}
-
 {% set bubble_color = "vert" %}
 
 {% block title %}- Article{% endblock %}
@@ -25,8 +22,4 @@
             <p class="mt-4 italic">Par La Rédaction</p>
         {% endif %}
     </article>
-
-    <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
-        {{ pagination.item(list_articles) }}
-    </footer>
 {% endblock %}

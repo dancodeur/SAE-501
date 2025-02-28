@@ -38,6 +38,9 @@
                 <td colspan="6" class="text-center bg-transparent border-solid border-slate-200 border-b py-4 px-6">Pas de contenu pour le moment</td>
             </tr>
             {% endfor %}
+            <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
+            {{ pagination.item(list_articles) }}
+            </footer>
         </ul>
         <a class="jpo-banniere rounded-lg overflow-hidden order-first lg:order-none" href="https://www.cyu.fr/formation/construire-son-projet/salons-journee-portes-ouvertes" target="_blank" title="Ouverture dans un nouvel onglet">
             <div class="logo">
@@ -54,7 +57,5 @@
             </section>
         </a>
     </section>
-    <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
-            {{ pagination.item(list_articles) }}
-    </footer>
+    
 {% endblock %}
