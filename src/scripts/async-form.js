@@ -61,7 +61,6 @@ const submitForm = async (e) => {
 
 
 
-// Ajouter l'écouteur d'événements
 document.querySelectorAll("[data-async-form]").forEach((item) => {
     item.addEventListener("submit", submitForm);
 });
