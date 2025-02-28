@@ -1,18 +1,18 @@
 import validator from "validator";
 
 // Fonction de validation
-const validateForm = (formData, formType) => {
+const validateForm = (formValues, formData, formType) => {
     const errors = {};
-    const imageFile = formData.get("image"); 
+    const imageFile = formData.get("image"); // Récupérer le fichier directement
 
     if (formType === "author") {
-        if (validator.isEmpty(formData.lastname?.trim() || "")) {
+        if (validator.isEmpty((formValues.lastname || "").trim())) {
             errors.lastname = "Un nom de famille est requis.";
         }
-        if (validator.isEmpty(formData.firstname?.trim() || "")) {
+        if (validator.isEmpty((formValues.firstname || "").trim())) {
             errors.firstname = "Un prénom est requis.";
         }
-        if (!validator.isEmail(formData.email?.trim() || "")) {
+        if (!validator.isEmail((formValues.email || "").trim())) {
             errors.email = "Veuillez mettre un email valide.";
         }
         if (!imageFile || imageFile.size === 0) {
@@ -21,10 +21,10 @@ const validateForm = (formData, formType) => {
     }
 
     if (formType === "article") {
-        if (validator.isEmpty(formData.title?.trim() || "")) {
+        if (validator.isEmpty((formValues.title || "").trim())) {
             errors.title = "Le titre est requis.";
         }
-        if (validator.isEmpty(formData.content?.trim() || "")) {
+        if (validator.isEmpty((formValues.content || "").trim())) {
             errors.content = "Le contenu est requis.";
         }
         if (!imageFile || imageFile.size === 0) {
@@ -33,10 +33,10 @@ const validateForm = (formData, formType) => {
     }
 
     if (formType === "sae") {
-        if (validator.isEmpty(formData.title?.trim() || "")) {
+        if (validator.isEmpty((formValues.title || "").trim())) {
             errors.title = "Le titre est requis.";
         }
-        if (validator.isEmpty(formData.content?.trim() || "")) {
+        if (validator.isEmpty((formValues.content || "").trim())) {
             errors.content = "Le contenu est requis.";
         }
         if (!imageFile || imageFile.size === 0) {
@@ -51,10 +51,10 @@ const handleFormValidation = (form, formType) => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const formValues = Object.fromEntries(formData.entries()); 
+        const formData = new FormData(e.target); // Récupérer tous les champs, y compris les fichiers
+        const formValues = Object.fromEntries(formData.entries()); // Convertir en objet pour les champs texte
 
-        const errors = validateForm(formData, formType); 
+        const errors = validateForm(formValues, formData, formType); // Passer les deux
 
         // Réinitialiser les erreurs affichées
         document.querySelectorAll("[data-error-message]").forEach((el) => {
@@ -71,12 +71,15 @@ const handleFormValidation = (form, formType) => {
                 }
             }
         } else {
-            console.log("Formulaire valide, prêt à être soumis !");
-        }
+            console.log("Formulaire valide, envoi en cours...");
+        
+            // Soumettre le formulaire manuellement après validation
+            form.submit();
+        }        
     });
 };
 
-// Sélectionner les formulaires 
+// Sélectionner les formulaires et appliquer la validation en fonction de leur type
 document.addEventListener("DOMContentLoaded", () => {
     const authorForm = document.querySelector("form[data-form='author']");
     const articleForm = document.querySelector("form[data-form='article']");
