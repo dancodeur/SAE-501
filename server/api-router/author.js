@@ -57,7 +57,7 @@ const base = "authors";
  */
 router.get(`/${base}`, async (req, res) => {
     const page = Math.max(1, Number(req.query.page) || 1);
-    const perPage = Number(req.query.per_page);
+    const perPage = Number(req.query.per_page) || 10;
 
     let listIds = req.query?.id;
     if (req.query.id && !Array.isArray(req.query.id)) {
@@ -70,8 +70,8 @@ router.get(`/${base}`, async (req, res) => {
         const listRessources = await Author.aggregate([
             ...(listIds.length ? [{ $match: { _id: { $in: listIds } } }] : []),
             { $sort: { lastname: 1 } },
-            ...(perPage ? [{ $skip: Math.max(page - 1, 0) * Number(perPage) }] : []),
-            ...(perPage ? [{ $limit: Number(perPage) }] : []),
+            { $skip: Math.max(page - 1, 0) * Number(perPage) },
+            { $limit: Number(perPage) },
             {
                 $project: {
                     _id: 1,
@@ -80,6 +80,7 @@ router.get(`/${base}`, async (req, res) => {
                     image: 1,
                     bio: 1,
                     email: 1,
+                    updated_at: 1,
                     nb_articles: { $size: "$list_articles" },
                 },
             },
@@ -505,5 +506,7 @@ router.delete(`/${base}/:id([a-f0-9]{24})`, async (req, res) => {
         });
     }
 });
+
+
 
 export default router;

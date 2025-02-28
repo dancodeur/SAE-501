@@ -1,28 +1,36 @@
 import express from "express";
-import axios from "axios";
 import mongoose from "mongoose";
 import querystring from "querystring";
 
 import upload from "#server/uploader.js";
+import Author from "#database/models/author.js";
 
 const base = "auteurs";
 const router = express.Router();
 
 // Get multiple authors
 router.get(`/${base}`, async (req, res) => {
-    const queryParams = querystring.stringify({ per_page: 7, ...req.query });
-    let options = {
-        method: "GET",
-        url: `${res.locals.base_url}/api/${base}?${queryParams}`,
-    };
-    let result = {};
-    try {
-        result = await axios(options);
-    } catch {}
+    const perPage = parseInt(req.query.per_page) || 7;
+    const page = parseInt(req.query.page) || 1;
 
-    res.render("pages/back-end/authors/list.njk", {
-        list_authors: result.data,
-    });
+    try {
+        const authors = await Author.find()
+            .skip((page - 1) * perPage)
+            .limit(perPage)
+            .exec();
+        const count = await Author.countDocuments().exec();
+
+        res.render("pages/back-end/authors/list.njk", {
+            list_authors: {
+                data: authors,
+                count: count,
+                current_page: page,
+                per_page: perPage,
+            },
+        });
+    } catch (e) {
+        res.status(500).send(e.message);
+    }
 });
 
 // Get or create author
