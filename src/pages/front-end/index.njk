@@ -13,7 +13,7 @@
         <ul class="flex md:flex-row sm:landscape:flex-col flex-col lg:flex-col gap-6">
              {% for item in list_articles.data %}
             <li>
-                <a class="flex flex-col sm:max-lg:landscape:flex-row w-full shadow hocus:shadow-xl transition-shadow rounded-lg overflow-hidden" href="/article/{{ article._id }}">
+                <a class="flex flex-col sm:max-lg:landscape:flex-row w-full shadow hocus:shadow-xl transition-shadow rounded-lg overflow-hidden" href="/article/{{ item._id }}">
                     <div class="aspect-[25/14] overflow-hidden">
                         <img class="object-cover h-full w-full" src="{{ item.image or '/images/image-placeholder-article.png' }}" alt="{{ item.title }}">
                     </div>
@@ -56,35 +56,5 @@
     </section>
     <footer class="flex justify-between px-4 flex-col @3xl/main:flex-row relative items-center">
             {{ pagination.item(list_articles) }}
-        </footer>
-
-
-
-        <script>
-            document.querySelectorAll('form[action^="/api/articles/"][method="post"]').forEach(form => {
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const button = this.querySelector('button');
-        
-        // Envoyer la requête POST en AJAX
-        fetch(this.action, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: this.dataset.id })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Mettre à jour l'état de l'article dans l'interface
-            if (data.success) {
-                const statusCell = this.closest('tr').querySelector('.status-cell');
-                statusCell.textContent = data.newStatus ? 'Oui' : 'Non';
-            }
-        })
-        .catch(error => {
-            console.error('Erreur lors de l\'activation/désactivation:', error);
-        });
-    });
-});
-
-        </script>
+    </footer>
 {% endblock %}
