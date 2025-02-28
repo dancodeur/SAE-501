@@ -70,7 +70,7 @@
             </form>
         </div>
     </div>
-
+   
     <script>
         const textarea = document.querySelector('textarea[name="content"]');
         const counter = document.getElementById('counter_description');
@@ -80,4 +80,6 @@
             const charsLeft = charsLimit - this.value.length;
             counter.textContent = charsLeft + ' caractères restants';
         });
+    </script>
+    <script src="../../../src/scripts/back-end/alerte-beforeunload.js"></script>
 {% endblock %}
