@@ -78,7 +78,7 @@ const base = "articles";
  */
 router.get(`/${base}`, async (req, res) => {
     const page = Math.max(1, Number(req.query.page) || 1);
-    let perPage = Number(req.query.per_page) || 7;
+    let perPage = Number(req.query.per_page) || 5;
     perPage = Math.min(Math.max(perPage, 1), 20);
 
     let listIds = req.query?.id;

@@ -7,7 +7,7 @@ const saeSchema = new Schema({
         type: String,
         required: [
             true,
-            errorRequiredMessage("un titre"),
+            errorRequiredMessage("Veuillez mettre un titre, le champ ne peut pas être nul ou vide"),
         ],
         trim: true,
     },
