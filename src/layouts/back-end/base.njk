@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <link rel="icon" type="image/x-icon" href="../../../public/images/mmi_logo.png">
+        <link rel="icon" type="image/x-icon" href="public/images/mmi_logo.png">
         <title>
             {% block title %}TITRE MANQUANT !
             {% endblock %}
@@ -31,6 +31,11 @@
             <script type="module" src="/src/scripts/back-end/pagination.js" defer></script>
         {% else %}
             <script type="module" src="/{{ manifest['src/scripts/back-end/pagination.js'].file }}" defer></script>
+        {% endif %}
+        {% if NODE_ENV == "development" %}
+            <script type="module" src="/src/scripts/back-end/logo-footer.js" defer></script>
+        {% else %}
+            <script type="module" src="/{{ manifest['src/scripts/back-end/logo-footer.js'].file }}" defer></script>
         {% endif %}
     </head>
     <body class="min-h-screen">
