@@ -109,6 +109,22 @@ router.get("/sur-les-medias(.html)?", routeName("medias"), async (_req, res) => 
     });
 });
 
+router.get("/auteur(.html)?", routeName("auteur"), async (_req, res) => {
+    const options = {
+        method: "GET",
+        url: `${res.locals.base_url}/api/saes?per_page=9`,
+    };
+
+    let result = {};
+    try {
+        result = await axios(options);
+    } catch (_error) {}
+
+    res.render("pages/front-end/auteur.njk", {
+        data: result.data,
+    });
+});
+
 /**
  * Gestion des erreurs 404
  */

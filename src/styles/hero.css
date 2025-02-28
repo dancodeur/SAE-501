@@ -103,6 +103,9 @@
     &.orange {
         background-color: #ee8f00;
     }
+    &.violet {
+        background-color: #b73ee3;
+    }
 }
 
 .bulle-icone-bordure {
@@ -144,5 +147,8 @@
 
     &.orange {
         background-color: #eb0706;
+    }
+    &.violet {
+        background-color: #6d208a;
     }
 }
