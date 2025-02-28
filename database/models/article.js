@@ -27,7 +27,7 @@ const articleSchema = new Schema(
         image: {
             type: String,
             required: [
-                true,
+                false,
                 "Veuillez mettre une image, le champ ne peut pas être nul ou vide",
             ],
         },
